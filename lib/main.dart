@@ -14,16 +14,17 @@ void main() {
       title: appName,
       themeMode: ThemeMode.system,
       theme: appTheme,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         // без этой строки при появлении экранной кливиатуры
         // MediaQuery.of(context).viewInsets.bottom всегда равнялся нулю
-        // вне зависимости от того, какой контекст передается
+        // вне зависимости от того, какой контекст передавался
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           centerTitle: true,
           title: const Text(appName),
         ),
-        body: const Home(),
+        body: const HomeScreen(),
       ),
     ),
   );
