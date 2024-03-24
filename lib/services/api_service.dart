@@ -4,10 +4,10 @@ import 'package:dio/dio.dart';
 final class ApiService {
   static final _client = Dio(
     BaseOptions(
-      baseUrl: "https://pyshop-flutter-test.free-bee.beeceptor.com",
-      sendTimeout: const Duration(seconds: 5),
+      baseUrl: "https://pyshop-flutter-test.free.beeceptor.com",
+      sendTimeout: const Duration(seconds: 10),
       connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 5),
+      receiveTimeout: const Duration(seconds: 10),
     ),
   );
 

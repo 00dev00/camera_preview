@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:camera_preview/services/camera_service.dart';
 import 'package:camera_preview/services/geo_service.dart';
-import 'package:camera_preview/views/widgets/camera_snapshot.dart';
+import 'package:camera_preview/views/widgets/camera/camera_main.dart';
 import 'package:camera_preview/views/widgets/init_failed.dart';
 import 'package:flutter/material.dart';
 
