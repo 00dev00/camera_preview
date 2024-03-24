@@ -17,14 +17,6 @@ final class ApiService {
       Future.error("Comment is missing");
     }
 
-    // _client.interceptors.add(
-    //   LogInterceptor(
-    //     requestBody: true,
-    //     responseBody: true,
-    //     logPrint: (o) => debugPrint(o.toString()),
-    //   ),
-    // );
-
     final formData = FormData.fromMap(
       {
         'comment': cameraInfo.comment,

@@ -22,7 +22,6 @@ class _CameraMainState extends State<CameraMain> {
   @override
   Widget build(BuildContext context) {
     final windowHeight = MediaQuery.sizeOf(context).height;
-    final windowWidth = MediaQuery.sizeOf(context).width;
 
     return Stack(
       children: [
