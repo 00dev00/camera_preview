@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           }
 
-          return CameraSnapshot();
+          return const CameraMain();
         } else {
           return const Center(
             child: CircularProgressIndicator(),

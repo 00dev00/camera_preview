@@ -7,23 +7,47 @@ import 'package:camera_preview/views/widgets/camera/camera_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-class CameraSnapshot extends StatelessWidget {
-  CameraSnapshot({super.key});
+class CameraMain extends StatefulWidget {
+  const CameraMain({super.key});
 
+  @override
+  State<CameraMain> createState() => _CameraMainState();
+}
+
+class _CameraMainState extends State<CameraMain> {
   final cameraService = CameraService();
   final geoService = GeoService();
+  bool showProgress = false;
 
   @override
   Widget build(BuildContext context) {
     final windowHeight = MediaQuery.sizeOf(context).height;
+    final windowWidth = MediaQuery.sizeOf(context).width;
 
-    return (windowHeight > 400)
-        ? CameraVerticalLayout(
+    return Stack(
+      children: [
+        if (windowHeight < 400)
+          CameraHorizontalLayout(
             onButtonPress: _onButtonPress,
           )
-        : CameraHorizontalLayout(
+        else
+          CameraVerticalLayout(
             onButtonPress: _onButtonPress,
-          );
+          ),
+        if (showProgress)
+          SizedBox.expand(
+            child: Container(
+              color: Colors.black87.withOpacity(0.4),
+              child: const Center(
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
   }
 
   Future<void> _onButtonPress(BuildContext context, String comment) async {
@@ -33,6 +57,9 @@ class CameraSnapshot extends StatelessWidget {
     FocusManager.instance.primaryFocus?.unfocus();
 
     try {
+      setState(() {
+        showProgress = true;
+      });
       final XFile image = await cameraService.getSnapshot();
       final Position position = await geoService.getCurrentPosition();
 
@@ -44,6 +71,9 @@ class CameraSnapshot extends StatelessWidget {
       );
 
       var (success, message) = await ApiService.sendInfo(cameraInfo);
+      setState(() {
+        showProgress = false;
+      });
 
       final snackBar = SnackBar(
         backgroundColor: success
