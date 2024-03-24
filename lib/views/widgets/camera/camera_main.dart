@@ -50,7 +50,7 @@ class _CameraMainState extends State<CameraMain> {
   }
 
   Future<void> _onButtonPress(BuildContext context, String comment) async {
-    var scaffoldMessanger = ScaffoldMessenger.of(context);
+    var scaffoldMessenger = ScaffoldMessenger.of(context);
     var theme = Theme.of(context);
 
     FocusManager.instance.primaryFocus?.unfocus();
@@ -87,18 +87,18 @@ class _CameraMainState extends State<CameraMain> {
           ),
         ),
       );
-      scaffoldMessanger.showSnackBar(snackBar);
+      scaffoldMessenger.showSnackBar(snackBar);
     } on CameraException {
       const snackBar = SnackBar(
         content: Text("Camera failed to take a snapshot"),
       );
 
-      scaffoldMessanger.showSnackBar(snackBar);
+      scaffoldMessenger.showSnackBar(snackBar);
     } on Exception catch (ex) {
       final snackBar = SnackBar(
         content: Text(ex.toString()),
       );
-      scaffoldMessanger.showSnackBar(snackBar);
+      scaffoldMessenger.showSnackBar(snackBar);
     }
   }
 }
