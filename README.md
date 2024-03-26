@@ -8,4 +8,4 @@
 
 Для выполнения запроса был создан новый эндпоинт.
 Пример запроса:\
-```curl  -X POST https://pyshop-flutter-test.free.beeceptor.com -F comment="Random comment" -F latitude=38.897675 -F longitude=-77.036547 -F photo=@1.jpg```
+```curl  -X POST https://pyshop-flutter-test.free.beeceptor.com/upload_photo -F comment="Random comment" -F latitude=38.897675 -F longitude=-77.036547 -F photo=@1.jpg```
